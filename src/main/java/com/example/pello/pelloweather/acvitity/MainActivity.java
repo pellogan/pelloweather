@@ -1,7 +1,9 @@
-package com.example.pello.pelloweather;
+package com.example.pello.pelloweather.acvitity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.pello.pelloweather.R;
 
 public class MainActivity extends AppCompatActivity {
 
