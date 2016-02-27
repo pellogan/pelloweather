@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.pello.pelloweather.model.City;
 import com.example.pello.pelloweather.model.County;
 import com.example.pello.pelloweather.model.Province;
+import com.example.pello.pelloweather.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,8 @@ public class PelloWeatherDB {
     private static PelloWeatherDB pelloWeatherDB;
     private SQLiteDatabase db;
 
+    public static boolean isInited = false;
+
     //构造方法私有化
     private PelloWeatherDB(Context context) {
         PelloWeatherOpenhelper dbHelper = new PelloWeatherOpenhelper(context, DB_NAME, null, VERSION);
@@ -39,12 +42,23 @@ public class PelloWeatherDB {
         return pelloWeatherDB;
     }
 
+    //是否已经初始化过了
+    public boolean isInited() {
+        Cursor cursor = db.rawQuery("select * from Province", null);
+        int num = cursor.getCount();
+        if (num > 0) {
+            isInited = true;
+        }
+        LogUtil.d("WeatherDb", "isInited  : ##" + isInited + "###"+num+"##'");
+        return isInited;
+    }
+
 
     //将province实例存储到数据库
     public void saveProvince(Province province) {
         if (province != null) {
-            String insertProvince = "insert into Province values ( " + province.getProvinceName() + ", "
-                    + province.getProvinceCode() + ")";
+            String insertProvince = "insert into Province  values ( '" + province.getProvinceName() + "', '"
+                    + province.getProvinceCode() + "')";
             db.execSQL(insertProvince);
 
         }
@@ -57,9 +71,8 @@ public class PelloWeatherDB {
         if (cursor.moveToFirst()) {
             do {
                 Province province = new Province();
-                province.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                province.setProvinceName(cursor.getString(cursor.getColumnIndex("provinceName")));
-                province.setProvinceCode(cursor.getString(cursor.getColumnIndex("provinceCode")));
+                province.setProvinceName(cursor.getString(cursor.getColumnIndex("province_name")));
+                province.setProvinceCode(cursor.getString(cursor.getColumnIndex("province_code")));
                 list.add(province);
             } while (cursor.moveToNext());
         }
@@ -69,24 +82,23 @@ public class PelloWeatherDB {
     //将City实例存储到数据库
     public void saveCity(City city) {
         if (city != null) {
-            String insertCity = "insert into City values ( " + city.getCityName() + ", "
-                    + city.getCityCode() + ", " + city.getProvinceId() + ")";
+            String insertCity = "insert into City  values ( '" + city.getCityName() + "', '"
+                    + city.getCityCode() + "', '" + city.getProvinceCode() + "')";
             db.execSQL(insertCity);
         }
 
     }
 
     //获取省份下的City实例
-    public List<City> loadCities(int provinceId) {
+    public List<City> loadCities(String provinceCode) {
         List<City> list = new ArrayList<City>();
-        Cursor cursor = db.query("City", null, "provinceId = ?", new String[]{String.valueOf(provinceId)}, null, null, null);
+        Cursor cursor = db.query("City", null, "province_code = ?", new String[]{provinceCode}, null, null, null);
         if (cursor.moveToFirst()) {
             do {
                 City city = new City();
-                city.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                city.setCityName(cursor.getString(cursor.getColumnIndex("cityName")));
-                city.setCityCode(cursor.getString(cursor.getColumnIndex("cityCode")));
-                city.setProvinceId(cursor.getInt(cursor.getColumnIndex("provinceId")));
+                city.setCityName(cursor.getString(cursor.getColumnIndex("city_name")));
+                city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
+                city.setProvinceCode(cursor.getString(cursor.getColumnIndex("province_code")));
                 list.add(city);
             } while (cursor.moveToNext());
         }
@@ -96,24 +108,25 @@ public class PelloWeatherDB {
     //将County存储到数据库
     public void saveCounty(County county) {
         if (county != null) {
-            String insertCounty = "insert into County values ( " + county.getCountyName() + ", "
-                    + county.getCountyCode() + ", " + county.getCityId() + ")";
+            String insertCounty = "insert into County values ( '" + county.getCountyName() + "', '"
+                    + county.getCountyCode() + "', '" + county.getCountyWeatherCode() + "','"
+                    + county.getCityCode() + "')";
             db.execSQL(insertCounty);
 
         }
     }
 
     //获取City下的County实例
-    public List<County> loadCounties(int cityId) {
+    public List<County> loadCounties(String cityCode) {
         List<County> list = new ArrayList<County>();
-        Cursor cursor = db.query("County", null, "cityId = ?", new String[]{String.valueOf(cityId)}, null, null, null);
+        Cursor cursor = db.query("County", null, "city_code = ?", new String[]{String.valueOf(cityCode)}, null, null, null);
         if (cursor.moveToFirst()) {
             do {
                 County county = new County();
-                county.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                county.setCountyName(cursor.getString(cursor.getColumnIndex("countyName")));
-                county.setCountyCode(cursor.getString(cursor.getColumnIndex("countyCode")));
-                county.setCityId(cursor.getInt(cursor.getColumnIndex("cityId")));
+                county.setCountyName(cursor.getString(cursor.getColumnIndex("county_name")));
+                county.setCountyCode(cursor.getString(cursor.getColumnIndex("county_code")));
+                county.setCountyWeatherCode(cursor.getString(cursor.getColumnIndex("county_weather_code")));
+                county.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
                 list.add(county);
             } while (cursor.moveToNext());
         }

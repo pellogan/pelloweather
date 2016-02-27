@@ -5,18 +5,10 @@ package com.example.pello.pelloweather.model;
  */
 public class County {
 
-    private int id;
     private String countyName;
     private String countyCode;
-    private int cityId;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String countyWeatherCode;
+    private String cityCode;
 
     public String getCountyName() {
         return countyName;
@@ -34,11 +26,19 @@ public class County {
         this.countyCode = countyCode;
     }
 
-    public int getCityId() {
-        return cityId;
+    public String getCountyWeatherCode() {
+        return countyWeatherCode;
     }
 
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
+    public void setCountyWeatherCode(String weatherCode) {
+        this.countyWeatherCode = weatherCode;
+    }
+
+    public String getCityCode() {
+        return cityCode;
+    }
+
+    public void setCityCode(String cityCode) {
+        this.cityCode = cityCode;
     }
 }
