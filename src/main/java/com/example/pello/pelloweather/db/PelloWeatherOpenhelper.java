@@ -14,18 +14,18 @@ public class PelloWeatherOpenhelper  extends SQLiteOpenHelper{
     //province 的建表语句
     public static final String CREATE_PROVINCE = "create table Province (" +
             "province_name text," +
-            "province_code text)";
+            "province_code text )";
 
     //city的建表语句
     public static final String CREATE_CITY = "create table City(" +
             "city_name text," +
-            "city_code text," +
+            "city_code  text," +
             "province_code text)";
 
     //county的建表语句
     public static final String CREATE_COUNTY = "create table County(" +
             "county_name text," +
-            "county_code text," +
+            "county_code  text," +
             "county_weather_code text,"+
             "city_code text )";
 

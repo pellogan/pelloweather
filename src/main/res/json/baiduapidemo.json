@@ -1,0 +1,188 @@
+﻿{
+  "status": 0,
+  "result": {
+    "location": {
+      "lng": 118.80143196823,
+      "lat": 32.047057987962
+    },
+    "formatted_address": "江苏省南京市秦淮区中山东路288-1",
+    "business": "珠江路,长白街,常府街",
+    "addressComponent": {
+      "adcode": "320104",
+      "city": "南京市",
+      "country": "中国",
+      "direction": "附近",
+      "distance": "1",
+      "district": "秦淮区",
+      "province": "江苏省",
+      "street": "中山东路",
+      "street_number": "288-1",
+      "country_code": 0
+    },
+    "pois": [
+      {
+        "addr": "长江路292号总统府内",
+        "cp": "NavInfo",
+        "direction": "西南",
+        "distance": "468",
+        "name": "太平湖",
+        "poiType": "旅游景点",
+        "point": {
+          "x": 118.80305960799,
+          "y": 32.050362809905
+        },
+        "tag": "旅游景点;风景区",
+        "tel": "",
+        "uid": "5d7530d129e90ef73a04b1d9",
+        "zip": ""
+      },
+      {
+        "addr": "南京市秦淮区太平南路",
+        "cp": "NavInfo",
+        "direction": "西北",
+        "distance": "50",
+        "name": "新世纪广场",
+        "poiType": "房地产",
+        "point": {
+          "x": 118.80172113278,
+          "y": 32.046759046096
+        },
+        "tag": "房地产;住宅区",
+        "tel": "",
+        "uid": "11b70385e3e88e29b05c6a4a",
+        "zip": ""
+      },
+      {
+        "addr": "南京市秦淮区",
+        "cp": "NavInfo",
+        "direction": "东北",
+        "distance": "81",
+        "name": "长安国际",
+        "poiType": "房地产",
+        "point": {
+          "x": 118.80084977643,
+          "y": 32.046674880048
+        },
+        "tag": "房地产;写字楼",
+        "tel": "",
+        "uid": "395c8acababc048240e1925a",
+        "zip": ""
+      },
+      {
+        "addr": "中山东路288号",
+        "cp": "NavInfo",
+        "direction": "附近",
+        "distance": "42",
+        "name": "新世纪广场A幢",
+        "poiType": "房地产",
+        "point": {
+          "x": 118.80181096333,
+          "y": 32.0470421495
+        },
+        "tag": "房地产;写字楼",
+        "tel": "",
+        "uid": "d0b8923f815c91e2b5f42f44",
+        "zip": ""
+      },
+      {
+        "addr": "白下太平南路2号(中山东路太平南路十字路口)",
+        "cp": "NavInfo",
+        "direction": "东",
+        "distance": "60",
+        "name": "长安国际中心",
+        "poiType": "房地产",
+        "point": {
+          "x": 118.80091265782,
+          "y": 32.046935029397
+        },
+        "tag": "房地产",
+        "tel": "",
+        "uid": "8fde79cc2f8508c295ca0728",
+        "zip": ""
+      },
+      {
+        "addr": "秦淮区太平南路1号大行宫新世纪广场B幢717室(近中山东",
+        "cp": "NavInfo",
+        "direction": "附近",
+        "distance": "5",
+        "name": "焙乐士DIY烘焙俱乐部",
+        "poiType": "美食",
+        "point": {
+          "x": 118.80146960724,
+          "y": 32.047080406649
+        },
+        "tag": "美食;蛋糕甜品店",
+        "tel": "",
+        "uid": "f1f5cac514fa318136b06c6f",
+        "zip": ""
+      },
+      {
+        "addr": "太平南路1号",
+        "cp": "NavInfo",
+        "direction": "北",
+        "distance": "71",
+        "name": "新世纪购物广场",
+        "poiType": "购物",
+        "point": {
+          "x": 118.80124503086,
+          "y": 32.04653715362
+        },
+        "tag": "购物;购物中心",
+        "tel": "",
+        "uid": "7e7e5a2331b3831626e0a026",
+        "zip": ""
+      },
+      {
+        "addr": "白下区太平南路1号新世纪广场内",
+        "cp": "NavInfo",
+        "direction": "附近",
+        "distance": "7",
+        "name": "华夏银行(大行宫支行)",
+        "poiType": "金融",
+        "point": {
+          "x": 118.8014965564,
+          "y": 32.047034498068
+        },
+        "tag": "金融;银行",
+        "tel": "",
+        "uid": "28e700f1c79ee901095cb37c",
+        "zip": ""
+      },
+      {
+        "addr": "秦淮区太平南路1号大行宫新世纪广场B栋2003室(近中山东",
+        "cp": "NavInfo",
+        "direction": "附近",
+        "distance": "5",
+        "name": "NICE CAT桌游主题俱乐部",
+        "poiType": "休闲娱乐",
+        "point": {
+          "x": 118.80146960724,
+          "y": 32.047080406649
+        },
+        "tag": "休闲娱乐;游戏场所",
+        "tel": "",
+        "uid": "c5ddcc0850ab15dfd91318ed",
+        "zip": ""
+      },
+      {
+        "addr": "中山东路288号新世纪广场A幢8层",
+        "cp": "NavInfo",
+        "direction": "附近",
+        "distance": "42",
+        "name": "青蓝计划",
+        "poiType": "教育培训",
+        "point": {
+          "x": 118.80181096333,
+          "y": 32.0470421495
+        },
+        "tag": "教育培训",
+        "tel": "",
+        "uid": "edbe0f9e1b3ebcf3fda778b5",
+        "zip": ""
+      }
+    ],
+    "poiRegions": [],
+    "sematic_description": "太平湖西南468米",
+    "cityCode": 315
+  }
+}

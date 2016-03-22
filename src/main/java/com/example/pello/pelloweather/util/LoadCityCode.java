@@ -16,7 +16,6 @@ import org.xmlpull.v1.XmlPullParser;
  */
 public class LoadCityCode {
 
-    public static  boolean IS_INITED = false;
 
     public static void initCityCode(final Resources resources,final  PelloWeatherDB db) throws Exception {
 //        LogUtil.d("XMLid", "--"+R.xml.cityid + "--");

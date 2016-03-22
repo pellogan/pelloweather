@@ -1,8 +1,10 @@
 package com.example.pello.pelloweather.activity;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Message;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,12 +20,11 @@ import com.example.pello.pelloweather.model.Province;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Handler;
 
 /**
  * Created by Pello on 2016/2/24.
  */
-public class MainActivity extends Activity  {
+public class ChooseCityActivity extends Activity  {
 
 
     public static final int LEVEL_PROVINCE = 1;
@@ -49,26 +50,37 @@ public class MainActivity extends Activity  {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intentIn = getIntent();
+        Boolean reChooseCity = intentIn.getBooleanExtra("rechoosecity", false);
+
+
         setContentView(R.layout.main_layout);
-        db = PelloWeatherDB.getInstance(this);
-        listView = (ListView) findViewById(R.id.list_view);
-        titleText = (TextView) findViewById(R.id.title_text);
-        db = PelloWeatherDB.getInstance(this);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataList);
-        listView.setAdapter(adapter);
-        queryProvinces();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (currentLevel == LEVEL_PROVINCE) {
-                    selectedProvince = provinceList.get(position);
-                    queryCities();
-                } else if (currentLevel == LEVEL_CITY) {
-                    selectedCity = cityList.get(position);
-                    queryCounties();
+            db = PelloWeatherDB.getInstance(this);
+            listView = (ListView) findViewById(R.id.list_view);
+            titleText = (TextView) findViewById(R.id.title_text);
+            db = PelloWeatherDB.getInstance(this);
+            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataList);
+            listView.setAdapter(adapter);
+            queryProvinces();
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (currentLevel == LEVEL_PROVINCE) {
+                        selectedProvince = provinceList.get(position);
+                        queryCities();
+                    } else if (currentLevel == LEVEL_CITY) {
+                        selectedCity = cityList.get(position);
+                        queryCounties();
+                    } else if (currentLevel == LEVEL_COUNTY) {
+                        selectedCounty = countyList.get(position);
+                        Intent intent = new Intent(ChooseCityActivity.this, WeatherActivity.class);
+                        intent.putExtra("county_code", selectedCounty.getCountyWeatherCode());
+                        startActivity(intent);
+                        finish();
+                    }
                 }
-            }
-        });
+            });
+
     }
 
     private void queryProvinces() {

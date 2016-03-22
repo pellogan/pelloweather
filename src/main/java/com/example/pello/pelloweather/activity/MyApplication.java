@@ -14,6 +14,7 @@ public class MyApplication extends Application {
 
     public static Context context;
 
+    @Override
     public void onCreate() {
         context = getApplicationContext();
             try {
@@ -22,6 +23,7 @@ public class MyApplication extends Application {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        super.onCreate();
     }
 
     public static Context getContext() {
